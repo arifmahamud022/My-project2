@@ -77,18 +77,24 @@
             
           </div>
 
+
+
+          <div class="">
+            <h1 class="text-center font-bold font-italic p-3" style="font-size: 25px;" >View More..</h1>
+          </div>
+
           <div class="col-lg-4 col-md-4 col-sm-4">
             <% if(bannerfs){ bannerfs.forEach(function(bannerf){ %>
-            <div class="row">
+            <div class="row mb-2">
               <div class="col-12">
                 <div class="hh">
-                  <a href="<%= baseUrl %>/news/<%= bannerf.slug %>">
+                  <a href="<%= baseUrl %>/update-newss/<%= bannerf.slug %>">
                     <div class="allthird sectionhover ml-6">
                       <div>
                         <img src="<%= baseUrl %>/uploads/<%= bannerf.bannerf_image %>" alt="" width="294px" height="191px">
                       </div>
                       <div class="text-white sm:text-xl">
-                        <b style="font-weight: 700;  font-size: 25px;"><%= bannerf.bannerf_title %></b>
+                        <b style="font-weight: 500;  font-size: 20px;"><%= bannerf.bannerf_title %></b>
                       </div>
                       <div class="text-left text-white  text-sm">
                         
