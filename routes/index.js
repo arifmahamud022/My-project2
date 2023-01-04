@@ -30,7 +30,6 @@ var Bannerb = require('../models/Bannerb');
 var Bannerc = require('../models/Bannerc');
 var Bannerf = require('../models/Bannerf');
 var Sport = require('../models/Sports');
-var Profile = require('../models/Profile');
 var Technology = require('../models/Technology');
 var Politic = require('../models/Politics');
 
@@ -126,7 +125,7 @@ router.get('/', async function (req, res, next) {
   const sports = await Sport.find({});
   const politics = await Politic.find({});
   const technologys = await Technology.find({});
-  const profiles = await Profile.find({});
+  
   const data = {
     title: 'News',
     baseUrl: base_url,
@@ -141,7 +140,7 @@ router.get('/', async function (req, res, next) {
     sports: sports,
     politics: politics,
     technologys: technologys,
-    profiles: profiles,
+    
   };
   res.render('index', data);
 });
