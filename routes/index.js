@@ -17,7 +17,7 @@ var upload = multer({ storage: storage });
 
 const { isAuth, isAdmin } = require('../config/auth')
 
-const base_url = process.env.BASEURL || 'https://al-news022.onrender.com';
+const base_url = process.env.BASEURL || 'https://my-news-bya.onrender.com';
 
 var User = require('../models/User');
 var Categories = require('../models/Categories');
