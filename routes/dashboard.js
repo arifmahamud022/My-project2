@@ -1113,7 +1113,7 @@ router.get('/banner-list', isAdmin, async function (req, res, next) {
         })
     })
 
-    res.render('dashboard/bannerList', {
+    res.render('dashboard/bannerlist', {
         title: 'banner List | Admin Dashboard',
         baseUrl: base_url,
         banners: bannersList,
@@ -1789,7 +1789,7 @@ router.get('/bannerc-list', isAdmin, async function (req, res, next) {
         })
     })
 
-    res.render('dashboard/bannercList', {
+    res.render('dashboard/bannerclist', {
         title: 'bannerc List | Admin Dashboard',
         baseUrl: base_url,
         bannercs: bannercsList,
@@ -2129,7 +2129,7 @@ router.get('/bannerf-list', isAdmin, async function (req, res, next) {
         })
     })
 
-    res.render('dashboard/bannerfList', {
+    res.render('dashboard/bannerfist', {
         title: 'bannerf List | Admin Dashboard',
         baseUrl: base_url,
         bannerfs: bannerfsList,
@@ -2467,7 +2467,7 @@ router.get('/sport-list', isAdmin, async function (req, res, next) {
         })
     })
 
-    res.render('dashboard/sportList', {
+    res.render('dashboard/sportlist', {
         title: 'sport List | Admin Dashboard',
         baseUrl: base_url,
         sports: sportsList,
@@ -2801,7 +2801,7 @@ router.get('/politic-list', isAdmin, async function (req, res, next) {
         })
     })
 
-    res.render('dashboard/politicList', {
+    res.render('dashboard/politiclist', {
         title: 'politic List | Admin Dashboard',
         baseUrl: base_url,
         politics: politicsList,
@@ -3135,7 +3135,7 @@ router.get('/technology-list', isAdmin, async function (req, res, next) {
         })
     })
 
-    res.render('dashboard/technologyList', {
+    res.render('dashboard/technologylist', {
         title: 'technology List | Admin Dashboard',
         baseUrl: base_url,
         technologys: technologysList,
