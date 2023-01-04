@@ -1,0 +1,23 @@
+<% if(bannercs){ bannercs.forEach(function(bannerc){ %>
+<a href="<%= baseUrl %>/newssss/<%= bannerc.slug %>">
+    <div class="allsec sectionhover">
+      <div class="title1">
+        <b class="text-2xl text-center p-3 text-gray-900 " ><%= bannerc.bannerc_title %></b>
+      </div>
+      
+        <div class="description1 ">
+          <p class="text-left text-gray-900  text-sm tlimit">
+            <span style="display:inline-block;
+            white-space: wrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 50ch;">
+
+            
+<%- bannerc.bannerc_description -%></p>
+          </span>
+        </div>
+      
+    </div>
+  </a>
+  <% }); }; %>

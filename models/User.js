@@ -22,7 +22,7 @@ var UserSchema = mongoosedb.Schema({
     name: {
         type: String,
     },
-    profileimg: {
+    profile_image: {
         type: String,
     },
     role: {

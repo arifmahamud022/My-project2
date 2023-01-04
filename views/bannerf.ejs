@@ -1,0 +1,15 @@
+<% if(bannerfs){ bannerfs.forEach(function(bannerf){ %>
+<a href="<%= baseUrl %>/update-newss/<%= bannerf.slug %>">
+    <div class="allthird sectionhover">
+      <div>
+        <img src="<%= baseUrl %>/uploads/<%= bannerf.bannerf_image %>" alt="" width="294px" height="191px">
+      </div>
+      <div class="text-gray-900">
+        <b style="font-weight: 800; font-size: 25px;"><%= bannerf.bannerf_title %></b>
+      </div>
+      <div class="text-left text-gray-900  text-sm">
+        <p><%- bannerf.bannerf_description -%></p>
+      </div>
+    </div>
+  </a>
+  <% }); }; %>

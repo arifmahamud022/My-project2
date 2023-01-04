@@ -1,0 +1,26 @@
+<% if(bannerbs){ bannerbs.forEach(function(bannerb){ %>
+<div class="col-6">
+    <a href="<%= baseUrl %>/newsss/<%= bannerb.slug %>">
+      <div class="allany sectionhover">
+        <div class="mytext">
+          <b class="text-2xl text-left p-3 text-gray-900 ">
+            
+            <%= bannerb.bannerb_title %></b>
+        </div>
+        
+        <div class="text-left text-gray-900  text-sm">
+          <p>
+            <%- bannerb.bannerb_description -%></p>
+        </div>
+      </div>
+    </a>
+
+  </div>
+  <div class="col-6">
+    <a href="<%= baseUrl %>/news/<%= bannerb.slug %>">
+      <div class="myi sectionhover">
+        <img src="<%= baseUrl %>/uploads/<%= bannerb.bannerb_image %>" alt="" width="321px" height="214px">
+      </div>
+    </a>
+  </div>
+  <% }); }; %>

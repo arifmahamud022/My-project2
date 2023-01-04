@@ -13,10 +13,10 @@
  
   </head>
 
-  <body>
+  <body class="bg-gray-900" style="background-attachment: fixed;">
     <div class="">
       <!-- Header -->
-      <div class="w-full bg-slate-400"><%- include('header'); -%></div>
+      <div class="w-full "><%- include('header'); -%></div>
       <!-- Header -->
       <!-- Main -->
       <div class="w-full bg-white">
@@ -43,11 +43,11 @@
 
       <div class="allpostviews">
         <div class="row p-5">
-          <div class="col-8 ">
+          <div class="col-lg-8 col-md-8 col-sm-8 ">
             <div class="title12">
-              <b class="text-3xl text-center p-3 text-gray-900 " style="font-size: 40px;"><%= post.title %></b>
+              <b class="text-3xl text-center p-3 text-white sm:text-xl" style="font-size: 40px;"><%= post.title %></b>
             </div>
-            <div class="authorname mb-2 mt-3" ><b>By<span style="color: #32a5cb;" class="ml-1"><%= post.author %></span></b></div>
+            <div class="authorname mb-2 mt-3" ><b class="text-white">By<span style="color: #32a5cb;" class="ml-1"><%= post.author %></span></b></div>
             <div class="social-menuuu">
               <div class="flex mt-1   sm:mt-0" >
                 <a href="#" class=" hover:text-gray-900 dark:hover:text-white p-1 " style="color: #32a5cb; ">
@@ -66,30 +66,30 @@
                 
             </div> 
             </div>
-            <div class="date mt-1 "><p><%= post.date_at %></p></div>
+            <div class="date mt-1 text-white"><p><%= post.date_at %></p></div>
             <div class="image mt-5">
               <img src="<%= baseUrl %>/uploads/<%= post.featured_image %>" alt="" width="819px" height="451px">
             </div>
-            <div class="description" maxlength="10" >
-              <p class=" text-gray-900  text-xl mt-4"><%- post.description -%></p>
+            <div class="description text-white" maxlength="10" >
+              <p class=" text-white  text-xl mt-4 sm:text-sm"><%- post.description -%></p>
             </div>
           </div>
 
-          <div class="col-4">
+          <div class="col-lg-4 col-md-4 col-sm-4">
             <% if(posts){ posts.forEach(function(post){ %>
             <div class="row">
               <div class="col-12">
                 <div class="hh">
                   <a href="<%= baseUrl %>/news/<%= post.slug %>">
-                    <div class="allthird hove ml-6">
+                    <div class="allthird sectionhover ml-6">
                       <div>
                         <img src="<%= baseUrl %>/uploads/<%= post.featured_image %>" alt="" width="294px" height="191px">
                       </div>
-                      <div class="text-gray-900">
-                        <b style="font-weight: 800; font-size: 25px;"><%= post.title %></b>
+                      <div class="text-white sm:text-xl">
+                        <b style="font-weight: 700;  font-size: 25px;"><%= post.title %></b>
                       </div>
-                      <div class="text-left text-gray-900  text-sm">
-                        <p><%- post.description -%></p>
+                      <div class="text-left text-white  text-sm">
+                        
                       </div>
                     </div>
                   </a>

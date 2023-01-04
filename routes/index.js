@@ -17,12 +17,20 @@ var upload = multer({ storage: storage });
 
 const { isAuth, isAdmin } = require('../config/auth')
 
-const base_url = process.env.BASEURL || 'https://my-news-bya.onrender.com';
+const base_url = process.env.BASEURL || 'https://al-news022.onrender.com';
 
 var User = require('../models/User');
 var Categories = require('../models/Categories');
 var Post = require('../models/Post');
 var View = require('../models/View');
+var Banner = require('../models/Banner');
+var Bannerb = require('../models/Bannerb');
+var Bannerc = require('../models/Bannerc');
+var Bannerf = require('../models/Bannerf');
+var Sport = require('../models/Sports');
+var Profile = require('../models/Profile');
+var Technology = require('../models/Technology');
+var Politic = require('../models/Politics');
 
 
 const ViewAdd = async (req) => {
@@ -109,13 +117,29 @@ const ViewAdd = async (req) => {
 /* GET home page. */
 router.get('/', async function (req, res, next) {
   const posts = await Post.find({});
+  const banners = await Banner.find({});
+  const bannerbs = await Bannerb.find({});
+  const bannercs = await Bannerc.find({});
+  const bannerfs = await Bannerf.find({});
+  const sports = await Sport.find({});
+  const politics = await Politic.find({});
+  const technologys = await Technology.find({});
+  const profiles = await Profile.find({});
   const data = {
-    title: 'Nes Express',
+    title: 'News',
     baseUrl: base_url,
     flashsms: req.flash('success'),
     flasherr: req.flash('error'),
     user: req.user,
     posts: posts,
+    banners: banners,
+    bannerbs: bannerbs,
+    bannercs: bannercs,
+    bannerfs: bannerfs,
+    sports: sports,
+    politics: politics,
+    technologys: technologys,
+    profiles: profiles,
   };
   res.render('index', data);
 });
@@ -156,6 +180,329 @@ router.get('/news/:slug', async function (req, res, next) {
   }
 
 });
+
+
+
+
+/* GET slug page for banner. */
+router.get('/newss/:slug', async function (req, res, next) {
+
+  let slug = req.params.slug;
+  console.log('slug :- ', slug);
+  const banners = await Banner.find({});
+  const banner = await Banner.findOne({ slug: slug });
+  if (banner) {
+    ViewAdd(req);
+    const banners = await Banner.find({});
+    const bannerdata = {
+      title: banner.banner_title,
+      baseUrl: base_url,
+      flashsms: req.flash('success'),
+      flasherr: req.flash('error'),
+      user: req.user,
+      banner: banner,
+      banners: banners,
+    };
+    res.render('bannerView', bannerdata);
+  } else {
+    const bannerdata = {
+      title: 'Nes Express',
+      baseUrl: base_url,
+      flashsms: req.flash('success'),
+      flasherr: req.flash('error'),
+      user: req.user,
+      banners: banners,
+    };
+    res.render('error404', bannerdata);
+  }
+
+});
+
+
+
+
+router.get('/newsss/:slug', async function (req, res, next) {
+
+  let slug = req.params.slug;
+  console.log('slug :- ', slug);
+  const bannerbs = await Bannerb.find({});
+  const bannerb = await Bannerb.findOne({ slug: slug });
+  if (bannerb) {
+    ViewAdd(req);
+    const bannerbs = await Bannerb.find({});
+    const bannerbdata = {
+      title: bannerb.bannerb_title,
+      baseUrl: base_url,
+      flashsms: req.flash('success'),
+      flasherr: req.flash('error'),
+      user: req.user,
+      bannerb: bannerb,
+      bannerbs: bannerbs,
+    };
+    res.render('bannerbView', bannerbdata);
+  } else {
+    const bannerbdata = {
+      title: 'News',
+      baseUrl: base_url,
+      flashsms: req.flash('success'),
+      flasherr: req.flash('error'),
+      user: req.user,
+      bannerbs: bannerbs,
+    };
+    res.render('error404', bannerbdata);
+  }
+
+});
+
+
+
+
+router.get('/newssss/:slug', async function (req, res, next) {
+
+  let slug = req.params.slug;
+  console.log('slug :- ', slug);
+  const bannercs = await Bannerc.find({});
+  const bannerc = await Bannerc.findOne({ slug: slug });
+  if (bannerc) {
+    ViewAdd(req);
+    const bannercs = await Bannerc.find({});
+    const bannercdata = {
+      title: bannerc.bannerc_title,
+      baseUrl: base_url,
+      flashsms: req.flash('success'),
+      flasherr: req.flash('error'),
+      user: req.user,
+      bannerc: bannerc,
+      bannercs: bannercs,
+    };
+    res.render('bannercView', bannercdata);
+  } else {
+    const bannercdata = {
+      title: 'Nes Express',
+      baseUrl: base_url,
+      flashsms: req.flash('success'),
+      flasherr: req.flash('error'),
+      user: req.user,
+      bannercs: bannercs,
+    };
+    res.render('error404', bannercdata);
+  }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+router.get('/update-newss/:slug', async function (req, res, next) {
+
+  let slug = req.params.slug;
+  console.log('slug :- ', slug);
+  const bannerfs = await Bannerf.find({});
+  const bannerf = await Bannerf.findOne({ slug: slug });
+  if (bannerf) {
+    ViewAdd(req);
+    const bannerfs = await Bannerf.find({});
+    const bannerfdata = {
+      title: bannerf.bannerf_title,
+      baseUrl: base_url,
+      flashsms: req.flash('success'),
+      flasherr: req.flash('error'),
+      user: req.user,
+      bannerf: bannerf,
+      bannerfs: bannerfs,
+    };
+    res.render('bannerfView', bannerfdata);
+  } else {
+    const bannerfdata = {
+      title: 'Nes Express',
+      baseUrl: base_url,
+      flashsms: req.flash('success'),
+      flasherr: req.flash('error'),
+      user: req.user,
+      bannerfs: bannerfs,
+    };
+    res.render('error404', bannerfdata);
+  }
+
+});
+
+
+
+// Sports Page Route
+
+/* . */
+router.get('/Sports', async function (req, res, next) {
+  const sports = await Sport.find({});
+  const data = {
+    title: 'News',
+    baseUrl: base_url,
+    flashsms: req.flash('success'),
+    flasherr: req.flash('error'),
+    user: req.user,
+    sports: sports,
+  };
+  res.render('Sports', data);
+});
+
+
+// sport slug for sportView
+
+
+router.get('/sports/:slug', async function (req, res, next) {
+
+  let slug = req.params.slug;
+  console.log('slug :- ', slug);
+  const sports = await Sport.find({});
+  const sport = await Sport.findOne({ slug: slug });
+  if (sport) {
+    ViewAdd(req);
+    const sports = await Sport.find({});
+    const sportdata = {
+      title: sport.sport_title,
+      baseUrl: base_url,
+      flashsms: req.flash('success'),
+      flasherr: req.flash('error'),
+      user: req.user,
+      sport: sport,
+      sports: sports,
+    };
+    res.render('sportView', sportdata);
+  } else {
+    const sportdata = {
+      title: 'Nes Express',
+      baseUrl: base_url,
+      flashsms: req.flash('success'),
+      flasherr: req.flash('error'),
+      user: req.user,
+      sports: sports,
+    };
+    res.render('error404', sportdata);
+  }
+
+});
+
+
+
+
+// Menu Category Politics slug and politicView Route
+
+router.get('/politics/:slug', async function (req, res, next) {
+
+  let slug = req.params.slug;
+  console.log('slug :- ', slug);
+  const politics = await Politic.find({});
+  const politic = await Politic.findOne({ slug: slug });
+  if (politic) {
+    ViewAdd(req);
+    const politics = await Politic.find({});
+    const politicdata = {
+      title: politic.politic_title,
+      baseUrl: base_url,
+      flashsms: req.flash('success'),
+      flasherr: req.flash('error'),
+      user: req.user,
+      politic: politic,
+      politics: politics,
+    };
+    res.render('politicView', politicdata);
+  } else {
+    const politicdata = {
+      title: 'Nes Express',
+      baseUrl: base_url,
+      flashsms: req.flash('success'),
+      flasherr: req.flash('error'),
+      user: req.user,
+      politics: politics,
+    };
+    res.render('error404', politicdata);
+  }
+
+});
+
+
+// Politics Page Route
+
+/* . */
+router.get('/Politics', async function (req, res, next) {
+  const politics = await Politic.find({});
+  const data = {
+    title: 'News',
+    baseUrl: base_url,
+    flashsms: req.flash('success'),
+    flasherr: req.flash('error'),
+    user: req.user,
+    politics: politics,
+  };
+  res.render('Politics', data);
+});
+
+// Menu Category Technology Routes
+
+// Technology page route
+router.get('/technology', async function (req, res, next) {
+  const technologys = await Technology.find({});
+  const data = {
+    title: 'News',
+    baseUrl: base_url,
+    flashsms: req.flash('success'),
+    flasherr: req.flash('error'),
+    user: req.user,
+    technologys: technologys,
+  };
+  res.render('technology', data);
+});
+
+
+router.get('/technologys/:slug', async function (req, res, next) {
+
+  let slug = req.params.slug;
+  console.log('slug :- ', slug);
+  const technologys = await Technology.find({});
+  const technology = await Technology.findOne({ slug: slug });
+  if (technology) {
+    ViewAdd(req);
+    const technologys = await Technology.find({});
+    const technologydata = {
+      title: technology.technology_title,
+      baseUrl: base_url,
+      flashsms: req.flash('success'),
+      flasherr: req.flash('error'),
+      user: req.user,
+      technology: technology,
+      technologys: technologys,
+    };
+    res.render('technologyView', technologydata);
+  } else {
+    const technologydata = {
+      title: 'Nes Express',
+      baseUrl: base_url,
+      flashsms: req.flash('success'),
+      flasherr: req.flash('error'),
+      user: req.user,
+      technologys: technologys,
+    };
+    res.render('error404', technologydata);
+  }
+
+});
+
+
+
+
+
+
 
 
 

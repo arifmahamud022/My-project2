@@ -25,6 +25,15 @@ var PostSchema = mongoosedb.Schema({
     featured_image: {
         type: String,
     },
+    banner_image: {
+        type: String,
+    },
+    banner_description: {
+        type: String,
+    },
+    banner_title: {
+        type: String,
+    },
     author: {
         type: String,
     },

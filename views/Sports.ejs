@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="shortcut icon" href="./assets/img/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/assets/css/assets.css" />
+    <%- include('link') -%>
+
+ 
+  </head>
+
+  <body class="" style="background-attachment: fixed;">
+    <div class="">
+      <!-- Header -->
+      <div class="w-full "><%- include('header'); -%></div>
+      <!-- Header -->
+      <!-- Main -->
+      <div class="w-full bg-white">
+        <% if(flashsms == ''){ }else{ %>
+        <div class="w-full text-center mb-4">
+          <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+            role="alert">
+            <span class="font-medium"><%= flashsms %></span>
+          </div>
+        </div>
+        <% }; %>
+        <% if(flasherr == ''){ }else{ %>
+        <div class="w-full text-center mb-4">
+          <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
+            role="alert">
+            <span class="font-medium"><%= flasherr %></span>
+          </div>
+        </div>
+        <% }; %>
+        
+        
+
+      </div>
+
+      <div class="">
+        <div class="all">
+            <div class="container">
+              <div class="row">
+                <% if(sports){ sports.forEach(function(sport){ %>
+                <div class="col-3">
+                  <a href="<%= baseUrl %>/sports/<%= sport.slug %>">
+                    <div class="allthird sectionhover p-3">
+                      <div>
+                        <img src="<%= baseUrl %>/uploads/<%= sport.sport_image %>" alt="" width="294px" height="191px">
+                      </div>
+                      <div class="text-gray-900">
+                        <b style="font-weight: 800; font-size: 15px;"><%= sport.sport_title %>...</b>
+                      </div>
+                      
+                    </div>
+                  </a>
+                  <div class="blackline" style="background: black; font-size: 1px; color: black;" >
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, rerum.</p>
+                  </div>
+      
+                </div>
+                <% }); }; %>
+                
+                
+              </div>
+            </div>
+          </div>
+      </div>
+      <!-- Main -->
+      <!-- footer -->
+      <div class="w-full"><%- include('foter'); -%></div>
+      <!-- footer -->
+    </div>
+
+  </body>
+
+</html>
