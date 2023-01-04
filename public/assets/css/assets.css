@@ -1,19 +1,22 @@
+/* google font import Link */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-
+/* This css for all Body */
 body{
     font-family: 'Roboto', sans-serif;
     max-width: 100%;
     max-height: 100%;
 }
-
+/* this css use for content center */
 
 .centerr{
     text-align: center;
 }
+/* title design */
 .title{
     text-align: center;
     padding: 36px 0 0 0;
 }
+/* All Hove in this class */
 .sectionhover:hover{
     background: white;
     transition: 0.4s;

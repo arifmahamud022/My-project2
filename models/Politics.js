@@ -4,7 +4,7 @@ var mongoosedb = require('../config/dbconfig');
 let date = new Date();
 date = date.toLocaleDateString('en-us', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true });
 
-// Post Schema
+// Menu Politics Post Schema
 var PoliticSchema = mongoosedb.Schema({
     slug: {
         type: String,

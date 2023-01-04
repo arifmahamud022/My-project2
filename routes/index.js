@@ -1,3 +1,5 @@
+
+// Import all Paclage
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
@@ -13,12 +15,12 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({ storage: storage });
-
+// Import Authentication for admin and login
 
 const { isAuth, isAdmin } = require('../config/auth')
 
 const base_url = process.env.BASEURL || 'https://my-news-bya.onrender.com';
-
+// Models Schema
 var User = require('../models/User');
 var Categories = require('../models/Categories');
 var Post = require('../models/Post');
@@ -32,7 +34,7 @@ var Profile = require('../models/Profile');
 var Technology = require('../models/Technology');
 var Politic = require('../models/Politics');
 
-
+// This is for Add View
 const ViewAdd = async (req) => {
   let date = new Date();
   date = date.toLocaleDateString('en-us', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
@@ -219,7 +221,7 @@ router.get('/newss/:slug', async function (req, res, next) {
 });
 
 
-
+// Get slug for BannerbView
 
 router.get('/newsss/:slug', async function (req, res, next) {
 
@@ -253,6 +255,8 @@ router.get('/newsss/:slug', async function (req, res, next) {
   }
 
 });
+
+// Get slug for BannercView
 
 
 
@@ -291,18 +295,7 @@ router.get('/newssss/:slug', async function (req, res, next) {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+// Get slug for BannerfView
 
 
 router.get('/update-newss/:slug', async function (req, res, next) {
@@ -504,11 +497,12 @@ router.get('/technologys/:slug', async function (req, res, next) {
 
 
 
-
+// login Page Route
 
 router.get('/login', function (req, res, next) {
   res.render('login', { title: 'User account login', flashsms: req.flash('success'), user: req.user });
 });
+// Register Page Route
 
 router.get('/register', function (req, res, next) {
   res.render('register', { title: 'User account register', errors: '', user: req.user });

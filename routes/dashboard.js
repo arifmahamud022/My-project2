@@ -15,13 +15,14 @@ var storage = multer.diskStorage({
         cb(null, today + '_' + file.originalname);
     },
 });
+// import package
 
 var upload = multer({ storage: storage });
 
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
 const { body, validationResult } = require('express-validator');
-
+// import Models Schema
 var User = require('../models/User');
 var Categories = require('../models/Categories');
 var Post = require('../models/Post');
@@ -31,11 +32,10 @@ var Bannerc = require('../models/Bannerc');
 var Bannerf = require('../models/Bannerf');
 var Sport = require('../models/Sports');
 var Politic = require('../models/Politics');
-var Profile = require('../models/Profile');
 var Technology = require('../models/Technology');
 var View = require('../models/View');
 
-
+// This is Authentication import
 const { isAdmin,isAuth } = require('../config/auth');
 
 
@@ -3156,254 +3156,6 @@ router.get('/technology-del', async function (req, res, next) {
 
 
 
-// Profile Image Route
-
-router.post('/profile-image',
-    upload.single('profile_image'),
-    isAdmin,
-    async function (req, res, next) {
-        let id = req.body.id;
-
-        // console.log(req.body);
-        const profile = await Profile.findOne({ _id: id });
-
-        if (req.file) {
-            console.log('Uploading File......');
-            var profile_image = today + '_' + req.file.originalname;
-        } else {
-            var profile_image = profile.profile_image;
-            console.log('No File Uploading......');
-        }
-
-        // Form Validator
-        const errors = validationResult(req);
-        console.log(errors)
-
-        if (!errors.isEmpty()) {
-            const categoryList = await Categories.find({});
-            res.render('dashboard/profileEdit', {
-                title: 'Profile Edit | Admin Dashboard',
-                baseUrl: base_url,
-                user: req.user,
-                profile: profile,
-                categoryList: categoryList,
-                flashsms: req.flash('success'),
-                flasherr: req.flash('error'),
-                errors: errors.errors,
-            });
-        } else {
-            var updateProfile = {
-                profile_image: profile_image,
-            };
-
-            const upData = await User.updateOne({ _id: id }, updateProfile);
-
-            console.log('Profile Update :- ', upData);
-
-            req.flash('success', 'profile update sucssesfuly...')
-            res.location(`/dashboard/profile-edit?id=${id}`);
-            res.redirect(`/dashboard/profile-edit?id=${id}`);
-        }
-
-    }
-);
-
-
-
-router.get('/profile',isAuth, function (req, res, next) {
-    res.render('dashboard/profile', { 
-        title: 'User account login',
-         flashsms: req.flash('success'), 
-         user: req.user ,
-         baseUrl: base_url,
-         flashsms: req.flash('success'),
-        flasherr: req.flash('error'),
-        errors: '',
-    });
-  });
-
-
-
-
-  router.post('/profile-add', isAdmin,
-    upload.single('profile_image'),
-   
-    async function (req, res, next) {
-        
-
-        // console.log(req.body);
-
-        if (req.file) {
-            console.log('Uploading File......');
-            var profile_image = today + '_' + req.file.originalname;
-        } else {
-            var profile_image = 'noimage.png';
-            console.log('No File Uploading......');
-        }
-
-        // Form Validator
-        const errors = validationResult(req);
-        console.log(errors)
-
-        if (!errors.isEmpty()) {
-            res.render('dashboard/profile', {
-                title: 'New Post | Admin Dashboard',
-                baseUrl: base_url,
-                categoryList: categoryList,
-                user: req.user,
-                flashsms: req.flash('success'),
-                flasherr: req.flash('error'),
-                errors: errors.errors,
-            });
-        } else {
-            
-
-            var newBanner = new Profile({
-                profile_image: profile_image,
-                
-            });
-
-            const addBanner = await new Profile(newBanner).save()
-
-            console.log('addBanner : ', addBanner);
-
-            req.flash('success', 'Post add sucssefuly...')
-            res.location('/');
-            res.redirect('/');
-        }
-
-    }
-);
-
-
-// profile edit route
-
-router.get('/profile-list', isAdmin, async function (req, res, next) {
-    const profiles = await Profile.find({});
-    const users = await User.find({});
-    const categories = await Categories.find({});
-
-    const userName = (uid) => {
-        let userName;
-        if (uid == '') { } else {
-            users.forEach((user) => {
-                if (user._id == uid) {
-                    userName = user.name;
-                }
-            })
-        }
-        if (userName == undefined) {
-            return '';
-        } else {
-            return userName;
-        }
-    }
-
-    const catName = (parent_id) => {
-        let ptitle;
-        if (parent_id == '') { } else {
-            categories.forEach((cat) => {
-                if (cat._id == parent_id) {
-                    ptitle = cat.title;
-                }
-            })
-        }
-        if (ptitle == undefined) {
-            return '';
-        } else {
-            return ptitle;
-        }
-    }
-
-    let profilesList = [];
-
-    profiles.forEach(async (profile) => {
-        profilesList.push({
-            _id: profile._id,
-            
-            profile_image: profile.profile_image,
-            
-            __v: profile.__v
-        })
-    })
-
-    res.render('dashboard/profileList', {
-        title: 'profile List | Admin Dashboard',
-        baseUrl: base_url,
-        profiles: profilesList,
-        flashsms: req.flash('success'),
-        flasherr: req.flash('error'),
-        user: req.user,
-    });
-});
-
-
-router.get('/profile-edit', isAdmin, async function (req, res, next) {
-
-    let bannerId = req.query.id;
-    const profile = await Profile.findOne({ _id: bannerId });
-    const categoryList = await Categories.find({});
-    res.render('dashboard/profileEdit', {
-        title: 'Profile Edit | Admin Dashboard',
-        baseUrl: base_url,
-        user: req.user,
-        profile: profile,
-        categoryList: categoryList,
-        flashsms: req.flash('success'),
-        flasherr: req.flash('error'),
-        errors: '',
-    });
-});
-
-/* profile update Router */
-router.post('/profile-update', isAdmin,
-   
-    async function (req, res, next) {
-        let id = req.body.id;
-       
-
-        // console.log(req.body);
-        // const postImg = await Post.findOne({ _id: id });
-
-        // if (req.file) {
-        //     upload.single('featured_image');
-        //     console.log('Uploading File......');
-        //     var featured_image = today + '_' + req.file.originalname;
-        // } else {
-        //     var featured_image = postImg.featured_image;
-        //     console.log('No File Uploading......');
-        // }
-
-        // Form Validator
-        const errors = validationResult(req);
-        console.log(errors)
-
-        if (!errors.isEmpty()) {
-            const profile = await Profile.findOne({ _id: id });
-            const categoryList = await Categories.find({});
-            res.render('dashboard/profileEdit', {
-                title: 'Post Edit | Admin Dashboard',
-                baseUrl: base_url,
-                user: req.user,
-                profile: profile,
-                categoryList: categoryList,
-                flashsms: req.flash('success'),
-                flasherr: req.flash('error'),
-                errors: errors.errors,
-            });
-        } else {
-            
-            const upData = await Profile.updateOne({ _id: id }, updateProfile);
-
-            console.log('profile Update :- ', upData);
-
-            req.flash('success', 'Popst update sucssesfuly...')
-            res.location(`/dashboard/profile-edit?id=${id}`);
-            res.redirect(`/dashboard/profile-edit?id=${id}`);
-        }
-
-    }
-);
 
 
 
