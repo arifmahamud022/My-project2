@@ -45,6 +45,10 @@
       <div class="allpostviews">
         <div class="row p-5">
           <div class="col-lg-8 col-md-8 col-sm-8 ">
+            <% if(!user){ %>
+              <h3 class="text-gray-100 text-center font-bold font-italic p-5">If you want to see details You Need to <span><a href="/login"><button type="button" class="btn btn-primary ml-1 mr-1">Login</button></a></span> or <span><a href="/register"><button type="button" class="btn btn-primary ml-1 mr-1">Register</button></a></span></h3>
+      
+              <% }else{ %>
             <div class="title12">
               <b class="text-3xl text-center p-3 text-white sm:text-xl" style="font-size: 40px;"><%= bannerf.bannerf_title %></b>
             </div>
@@ -74,6 +78,7 @@
             <div class="description text-white" maxlength="10" >
               <p class=" text-white  text-xl mt-4 sm:text-sm"><%- bannerf.bannerf_description -%></p>
             </div>
+            <% }; %>
 
             
           </div>

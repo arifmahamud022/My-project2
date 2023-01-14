@@ -39,7 +39,7 @@ var View = require('../models/View');
 const { isAdmin,isAuth } = require('../config/auth');
 
 
-const base_url = process.env.BASEURL || 'https://my-news-bya.onrender.com';
+const base_url = process.env.BASEURL || 'https://all-news-devxz.onrender.com';
 
 
 
