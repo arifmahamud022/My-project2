@@ -45,9 +45,30 @@
         <div class="row p-5">
           <div class="col-lg-8 col-md-8 col-sm-8 ">
             <% if(!user){ %>
-              <h3 class="text-gray-100 text-center font-bold font-italic p-5">If you want to see details You Need to <span><a href="/login"><button type="button" class="btn btn-primary ml-1 mr-1">Login</button></a></span> or <span><a href="/register"><button type="button" class="btn btn-primary ml-1 mr-1">Register</button></a></span></h3>
-      
-              <% }else{ %>
+              
+              <div class="w-full p-4 text-center bg-white border rounded-lg shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+                <h5 class="mb-2 text-3xl font-bold text-gray-900 dark:text-white">Are you want to see Details?</h5>
+                <p class="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">If You want to see details you need to a User account .If you new in ALL-NEWS You Need to signup or Login.</p>
+                <div class="items-center justify-center space-y-4 sm:flex sm:space-y-0 sm:space-x-4">
+                    <a href="/login" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                        
+                        <div class="text-left">
+                            
+                            <div class="-mt-1 font-sans text-sm font-semibold">Login </div>
+                        </div>
+                    </a>
+                    <a href="/register" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 text-white rounded-lg inline-flex items-center justify-center px-4 py-2.5 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                        
+                        <div class="text-left">
+                            
+                            <div class="-mt-1 font-sans text-sm font-semibold">Register</div>
+                        </div>
+                    </a>
+                </div>
+              </div>
+              
+                    
+                            <% }else{ %>
             <div class="title12">
               <b class="text-3xl text-center p-3 text-white sm:text-xl" style="font-size: 40px;"><%= post.title %></b>
             </div>
